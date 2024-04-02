@@ -5,3 +5,5 @@ typedef struct {
     int casosGraves24;
     int obitos24;
 }No;
+
+//testando
