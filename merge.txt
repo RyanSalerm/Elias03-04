@@ -1,0 +1,8 @@
+UF Norte,Casos Graves 2023,Óbitos por Dengue 2023,Casos Graves 2024, Óbitos por Dengue 2024
+Acre,9,0,0,0
+Amapá,1,0,2,1
+Amazonas,12,4,24,0
+Pará,8,0,15,0
+Rondônia,64,4,5,0
+Roraima,0,0,1,0
+Tocantis,20,0,10,0
