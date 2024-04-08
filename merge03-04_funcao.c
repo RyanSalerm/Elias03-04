@@ -78,3 +78,21 @@ void imprimir(const No *dados) {
     printf("\n");
   }
 }
+/*
+Ordenar por UF: if (strcmp(v[pos_inicio].uf, v[pos_meio].uf) <= 0)
+Ordenar os casos graves 23: if (v[pos_inicio].casos_graves23 <= v[pos_meio].casos_graves23)
+Ordenar os casos graves 24: if (v[pos_inicio].casos_graves23 <= v[pos_meio].casos_graves24)
+Ordenar por óbitos 23: if (v[pos_inicio].obitos_dengue23 <= v[pos_meio].obitos_dengue23)
+Ordenar por óbitos 24 if (v[pos_inicio].obitos_dengue24 <= v[pos_meio].obitos_dengue24)
+
+if ((v[pos_inicio].casos_graves23 - v[pos_inicio].obitos_dengue23) <= (v[pos_meio].casos_graves23 - v[pos_meio].obitos_dengue23))
+
+if ((v[pos_inicio].casos_graves24 - v[pos_inicio].obitos_dengue24) <= (v[pos_meio].casos_graves24 - v[pos_meio].obitos_dengue24))
+
+if ((v[pos_inicio].obitos_dengue23 - v[pos_inicio].casos_graves23) <= (v[pos_meio].obitos_dengue23 - v[pos_meio].casos_graves23))
+
+
+if ((v[pos_inicio].obitos_dengue24 - v[pos_inicio].casos_graves24) <= (v[pos_meio].obitos_dengue24 - v[pos_meio].casos_graves24))
+
+*/
+
