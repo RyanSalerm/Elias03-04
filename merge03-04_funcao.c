@@ -46,6 +46,10 @@ int comparar(const void *a, const void *b, ChaveOrdenacao chave) {
             return no1->obitos_dengue23 - no2->obitos_dengue23;
         case OBITOS_24:
             return no1->obitos_dengue24 - no2->obitos_dengue24;
+        case CASOS_GRAVES_24_CASOS_GRAVES_23:
+            return no1->casos_graves24 - no1->casos_graves23 - (no2->casos_graves24 - no2->casos_graves23);
+        case OBITOS_24_OBITOS_23:
+            return no1->obitos_dengue24 - no1->obitos_dengue23 - (no2->obitos_dengue24 - no2->obitos_dengue23);
         default:
             return 0;
     }
@@ -94,6 +98,8 @@ void imprimir(const No *dados) {
     printf("Casos Graves 2024: %d\n", dados[i].casos_graves24);
     printf("Casos Dengue 2023: %d\n", dados[i].obitos_dengue23);
     printf("Casos Dengue 2024: %d\n", dados[i].obitos_dengue24);
+    printf("Diferenca de Casos: %d\n", dados[i].casos_graves24 - dados[i].casos_graves23);
+    printf("Diferenca de Obitos: %d\n", dados[i].obitos_dengue24 - dados[i].obitos_dengue23);
     printf("\n");
   }
 }

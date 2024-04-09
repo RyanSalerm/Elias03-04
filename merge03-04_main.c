@@ -19,10 +19,8 @@ int main() {
   "3-Casos Graves 2024\n"
   "4-Obitos por dengue 2023\n"
   "5-Obitos por dengue 2024\n"
-  "6-Diferenca dos casos graves 2023\n"
-  "7-Diferenca dos casos graves 2024\n"
-  "8-Diferenca dos obitos 2023\n"
-  "9-Diferenca dos obitos 2024\n->");
+  "6-Diferenca dos casos graves\n"
+  "7-Diferenca dos obitos\n->");
   scanf("%d", &op);
   switch(op)
   {
@@ -44,9 +42,17 @@ int main() {
 
     case 5:
     mergeSort(dados, 0, MAX_DADOS - 1, OBITOS_24);
+    break;
+
+    case 6:
+    mergeSort(dados, 0, MAX_DADOS - 1, CASOS_GRAVES_24_CASOS_GRAVES_23);
+    break;
+
+    case 7:
+    mergeSort(dados, 0, MAX_DADOS - 1, OBITOS_24_OBITOS_23);
   }
   imprimir(dados);
   free(dados);
-  
+
   return 0;
 }
