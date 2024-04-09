@@ -26,45 +26,64 @@ No *computando_No() {
                 &dados[contador].obitos_dengue23,
                 &dados[contador].obitos_dengue24) == 5) {
     contador++;
-    printf("\n%d\n", contador);
   }
   fclose(arquivo);
   return dados;
 }
 
-void intercalar(No v[], int inicio, int meio, int fim) {
-  int pos_inicio, pos_meio, pos_aux;
-  No *aux;
-  pos_inicio = inicio;
-  pos_meio = meio + 1;
-  pos_aux = 0;
-  aux = malloc((fim - inicio + 1) * sizeof(No));
+int comparar(const void *a, const void *b, ChaveOrdenacao chave) {
+    const No *no1 = (const No *)a;
+    const No *no2 = (const No *)b;
 
-  while (pos_inicio <= meio && pos_meio <= fim) {
-    if (strcmp(v[pos_inicio].uf, v[pos_meio].uf) <= 0)
-      aux[pos_aux++] = v[pos_inicio++];
-    else
-      aux[pos_aux++] = v[pos_meio++];
-  }
-
-  while (pos_inicio <= meio)
-    aux[pos_aux++] = v[pos_inicio++];
-
-  while (pos_meio <= fim)
-    aux[pos_aux++] = v[pos_meio++];
-
-  for (pos_aux = 0; pos_aux < fim - inicio + 1; pos_aux++)
-    v[inicio + pos_aux] = aux[pos_aux];
-
-  free(aux);
+    switch (chave) {
+        case UF:
+            return strcmp(no1->uf, no2->uf);
+        case CASOS_GRAVES_23:
+            return no1->casos_graves23 - no2->casos_graves23;
+        case CASOS_GRAVES_24:
+            return no1->casos_graves24 - no2->casos_graves24;
+        case OBITOS_23:
+            return no1->obitos_dengue23 - no2->obitos_dengue23;
+        case OBITOS_24:
+            return no1->obitos_dengue24 - no2->obitos_dengue24;
+        default:
+            return 0;
+    }
 }
 
-void mergeSort(No v[], int inicio, int fim) {
+void intercalar(No v[], int inicio, int meio, int fim, ChaveOrdenacao chave) {
+    int pos_inicio, pos_meio, pos_aux;
+    No *aux;
+    pos_inicio = inicio;
+    pos_meio = meio + 1;
+    pos_aux = 0;
+    aux = malloc((fim - inicio + 1) * sizeof(No));
+
+    while (pos_inicio <= meio && pos_meio <= fim) {
+        if (comparar(&v[pos_inicio], &v[pos_meio], chave) <= 0)
+            aux[pos_aux++] = v[pos_inicio++];
+        else
+            aux[pos_aux++] = v[pos_meio++];
+    }
+
+    while (pos_inicio <= meio)
+        aux[pos_aux++] = v[pos_inicio++];
+
+    while (pos_meio <= fim)
+        aux[pos_aux++] = v[pos_meio++];
+
+    for (pos_aux = 0; pos_aux < fim - inicio + 1; pos_aux++)
+        v[inicio + pos_aux] = aux[pos_aux];
+
+    free(aux);
+}
+
+void mergeSort(No v[], int inicio, int fim, ChaveOrdenacao chave) {
   if (inicio < fim) {
     int meio = (inicio + fim) / 2;
-    mergeSort(v, inicio, meio);
-    mergeSort(v, meio + 1, fim);
-    intercalar(v, inicio, meio, fim);
+    mergeSort(v, inicio, meio, chave);
+    mergeSort(v, meio + 1, fim, chave);
+    intercalar(v, inicio, meio, fim, chave);
   }
 }
 
@@ -78,3 +97,5 @@ void imprimir(const No *dados) {
     printf("\n");
   }
 }
+
+

@@ -5,8 +5,15 @@ typedef struct {
   int casos_graves24;
   int obitos_dengue24;
 } No;
+typedef enum {
+    UF,
+    CASOS_GRAVES_23,
+    CASOS_GRAVES_24,
+    OBITOS_23,
+    OBITOS_24
+} ChaveOrdenacao;
 
 No *computando_No();
-void intercalar(No v[], int inicio, int meio, int fim);
-void mergeSort(No v[], int inicio, int fim);
+void intercalar(No v[], int inicio, int meio, int fim, ChaveOrdenacao chave);
+void mergeSort(No v[], int inicio, int fim, ChaveOrdenacao chave);
 void imprimir(const No *aux);
