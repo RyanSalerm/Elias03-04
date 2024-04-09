@@ -97,5 +97,3 @@ void imprimir(const No *dados) {
     printf("\n");
   }
 }
-
-

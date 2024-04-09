@@ -47,5 +47,6 @@ int main() {
   }
   imprimir(dados);
   free(dados);
+  
   return 0;
 }
