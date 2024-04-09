@@ -50,6 +50,7 @@ int main() {
 
     case 7:
     mergeSort(dados, 0, MAX_DADOS - 1, OBITOS_24_OBITOS_23);
+    break;
   }
   imprimir(dados);
   free(dados);
